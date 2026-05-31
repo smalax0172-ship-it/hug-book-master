@@ -1,0 +1,4 @@
+- Activated lamp state
+- Blue glow
+- Technology active
+- Page 15 is the source of truth
