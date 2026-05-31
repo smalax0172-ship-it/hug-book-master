@@ -1,25 +1,25 @@
 # Illustration Workflow
 
 Step 1
-Read STORY_CANON.md
+Read `01_TEXT/STORY_CANON.md`.
 
 Step 2
 Identify the page being illustrated.
 
 Step 3
-Review PAGE_MAP.md.
+Review `03_PAGES/PAGE_MAP.md`.
 
 Step 4
-Review PAGE_CHECKLIST.md.
+Review `03_PAGES/PAGE_CHECKLIST.md`.
 
 Step 5
 Review image assignments:
 
-- CHILD_Page17.png
-- MOM_Page17.png
-- ROOM_Page17.png
-- LAMP_Page17.png
-- LAMP_Page15.png
+- `02_REFERENCES/IMAGES/CHILD_Page17.png`
+- `02_REFERENCES/IMAGES/MOM_Page17.png`
+- `02_REFERENCES/IMAGES/ROOM_Page17.png`
+- `02_REFERENCES/IMAGES/LAMP_Page17.png`
+- `02_REFERENCES/IMAGES/LAMP_Page15.png`
 
 Step 6
 Generate illustration prompt.
@@ -41,8 +41,8 @@ Reject image if canon conflicts exist.
 
 Rules:
 
-- STORY_CANON.md is highest text authority.
-- Visual reference images are highest visual authority.
+- `01_TEXT/STORY_CANON.md` is highest text authority.
+- Visual reference images in `02_REFERENCES/IMAGES/` are highest visual authority after placeholders are replaced with uploaded references.
 - Never redesign characters.
 - Never redesign room layout.
 - Never redesign lamp appearance.
