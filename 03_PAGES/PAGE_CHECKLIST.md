@@ -21,3 +21,12 @@ Visual canon overrides prompt wording if conflicts occur.
 
 Rule:
 `01_TEXT/STORY_CANON.md` overrides all illustration prompts.
+
+
+Additional regeneration-specific checks:
+
+- Filled template uses `03_PAGES/PAGE_GENERATION_TEMPLATE.md`
+- All six references from `02_REFERENCES/LOCKED_REFERENCE_SET.md` are included
+- Page 14 child identity standard is explicitly identified as `02_REFERENCES/IMG_2756.jpg`
+- Exactly one page is targeted
+- No generation happens until the filled template receives human approval
