@@ -2,10 +2,18 @@
 
 Use this checklist for every future Codex session that generates or reviews book pages. Complete the steps in order and do not generate a page until the required canon, map, and reference checks are complete.
 
+## Regeneration Pipeline Rule
+
+For regeneration work, first use `03_PAGES/REGENERATION_PIPELINE.md`, then prepare one filled copy of `03_PAGES/PAGE_GENERATION_TEMPLATE.md`. Every filled template must include the six-image locked reference set defined in `02_REFERENCES/LOCKED_REFERENCE_SET.md`, and Page 14 (`02_REFERENCES/IMG_2756.jpg`) is the child identity standard. Do not generate a page until the completed one-page template has explicit human approval.
+
 ## Required Workflow Checklist
 
 - [ ] **1. Read `REPOSITORY_LOCK.md` first**
   - Confirm repository rules, locked content, and any explicit do-not-modify constraints before touching page work.
+
+- [ ] **1a. For regeneration, read the regeneration docs**
+  - Read `03_PAGES/REGENERATION_PIPELINE.md`, `03_PAGES/PAGE_GENERATION_TEMPLATE.md`, and `02_REFERENCES/LOCKED_REFERENCE_SET.md`.
+  - Confirm the filled template includes all six locked references and uses Page 14 as the child identity standard.
 
 - [ ] **2. Read `00_CANON/CHILD_CANON.md`**
   - Confirm the child's fixed appearance, proportions, clothing, expression range, and continuity requirements.

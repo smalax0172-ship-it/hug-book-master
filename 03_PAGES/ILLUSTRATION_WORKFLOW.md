@@ -47,3 +47,14 @@ Rules:
 - Never redesign room layout.
 - Never redesign lamp appearance.
 - Maintain consistent art style across all pages.
+
+
+## Regeneration Addendum
+
+When the task is page regeneration rather than general illustration planning:
+
+1. Read `03_PAGES/REGENERATION_PIPELINE.md`.
+2. Fill exactly one copy of `03_PAGES/PAGE_GENERATION_TEMPLATE.md`.
+3. Include every file from `02_REFERENCES/LOCKED_REFERENCE_SET.md`.
+4. Treat `02_REFERENCES/IMG_2756.jpg` as the Page 14 child identity standard.
+5. Stop after workflow/template preparation unless a human explicitly approves generation.
