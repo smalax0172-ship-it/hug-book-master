@@ -13,6 +13,7 @@ The `.png` files in this directory are placeholders only. Do not generate new ar
 | `ROOM_Page17.png` | The uploaded Page 17 room reference image | Primary room reference: wooden bed, teddy bear, round braided rug, nightstand, window with stars, bookshelf, toy horse, mountain picture, balloon picture. |
 | `LAMP_Page17.png` | The uploaded Page 17 neutral lamp reference image | Neutral lamp state: warm white glow and human connection theme. |
 | `LAMP_Page15.png` | The uploaded Page 15 activated lamp reference image | Activated lamp state: blue glow and technology active. |
+| `STYLE_Page30.png` | The uploaded Page 30 style reference image | Overall illustration style reference for Page 30. |
 
 ## Source-of-Truth Rule
 
