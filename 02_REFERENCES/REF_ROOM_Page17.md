@@ -1,0 +1,11 @@
+- Primary room reference
+- Wooden bed
+- Teddy bear
+- Round braided rug
+- Nightstand
+- Window with stars
+- Bookshelf
+- Toy horse
+- Mountain picture
+- Balloon picture
+- Page 17 is the source of truth

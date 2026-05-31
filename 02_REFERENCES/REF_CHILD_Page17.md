@@ -1,0 +1,6 @@
+- Primary child reference
+- Brown tousled hair
+- Large brown eyes
+- Cream pajamas with gold pattern
+- Barefoot
+- Page 17 is the source of truth

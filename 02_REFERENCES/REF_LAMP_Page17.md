@@ -1,0 +1,4 @@
+- Neutral lamp state
+- Warm white glow
+- Human connection theme
+- Page 17 is the source of truth

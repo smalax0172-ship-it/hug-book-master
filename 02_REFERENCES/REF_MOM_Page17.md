@@ -1,0 +1,5 @@
+- Primary mom reference
+- Long wavy brown hair
+- Rose-pink sweater
+- Warm expression
+- Page 17 is the source of truth
