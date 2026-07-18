@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thinking Buddy</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="levelScreen" class="card level-card">
+      <p class="eyebrow">Thinking Buddy</p>
+      <h1>A Socratic chemistry tutor that checks for human thinking.</h1>
+      <p class="lede">Before the tutor starts, choose the class level. This sets the bar for the whole session.</p>
+      <div class="level-grid" aria-label="Choose class level">
+        <button data-level="CP">CP</button>
+        <button data-level="Honors">Honors</button>
+        <button data-level="AP">AP</button>
+      </div>
+    </section>
+
+    <section id="tutorScreen" class="card tutor-card hidden" aria-live="polite">
+      <header class="tutor-header">
+        <div>
+          <p class="eyebrow">Thinking Buddy</p>
+          <h1>Why does table salt dissolve in water?</h1>
+        </div>
+        <span id="levelBadge" class="badge"></span>
+      </header>
+
+      <ol class="progress" aria-label="Session progress">
+        <li class="active" data-stage="Predict">Predict</li>
+        <li data-stage="Reasoning">Reasoning</li>
+        <li data-stage="Own it">Own it</li>
+        <li data-stage="Record">Record</li>
+      </ol>
+
+      <div id="bars" class="bars" aria-live="assertive"></div>
+
+      <section id="promptCard" class="opening">
+        You drop a spoonful of table salt into a glass of water and stir. After a minute the salt is gone. Before you run the simulation: where did it go, and why? Write what you actually think, even if you are not sure. A guess you can explain beats a right answer you cannot.
+      </section>
+
+      <section id="transcript" class="transcript" aria-label="Chat transcript"></section>
+
+      <section id="record" class="record hidden" aria-label="Reasoning Record"></section>
+
+      <form id="chatForm" class="composer">
+        <label for="studentInput" class="sr-only">Your thinking</label>
+        <textarea id="studentInput" placeholder="Write what you think..." rows="4"></textarea>
+        <div class="actions">
+          <button type="button" id="stuckBtn" class="secondary">I'm stuck</button>
+          <button type="button" id="gotItBtn" class="secondary hidden">I think I've got it</button>
+          <button type="submit" id="sendBtn">Send</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
