@@ -27,7 +27,9 @@ button:disabled { opacity: .58; cursor: wait; }
 .msg { max-width: 88%; border-radius: 1rem; padding: .75rem .85rem; line-height: 1.45; white-space: pre-wrap; }
 .msg.user { align-self: flex-end; background: var(--brand); color: white; border-bottom-right-radius: .25rem; }
 .msg.assistant { align-self: flex-start; background: #edf1f5; border-bottom-left-radius: .25rem; }
+.transcript.ownership-closed-book .msg.assistant { filter: blur(8px); opacity: .15; user-select: none; -webkit-user-select: none; pointer-events: none; }
 .composer { display: grid; gap: .6rem; }
+.ownership-notice { margin: 0; color: var(--brand); font-weight: 900; }
 textarea { width: 100%; resize: vertical; border: 1px solid var(--line); border-radius: 1rem; padding: .8rem; font: inherit; line-height: 1.4; }
 textarea:focus { outline: 3px solid rgba(39, 93, 82, .2); border-color: var(--brand); }
 .actions { display: grid; grid-template-columns: 1fr; gap: .5rem; }

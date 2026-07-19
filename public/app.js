@@ -3,6 +3,7 @@ const tutorScreen = document.querySelector('#tutorScreen');
 const levelBadge = document.querySelector('#levelBadge');
 const transcriptEl = document.querySelector('#transcript');
 const form = document.querySelector('#chatForm');
+const ownershipNotice = document.querySelector('#ownershipNotice');
 const input = document.querySelector('#studentInput');
 const stuckBtn = document.querySelector('#stuckBtn');
 const gotItBtn = document.querySelector('#gotItBtn');
@@ -27,6 +28,7 @@ function addMessage(role, content) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   div.textContent = content;
+  if (role === 'assistant' && ownershipMode) div.setAttribute('aria-hidden', 'true');
   transcriptEl.appendChild(div);
   transcriptEl.scrollTop = transcriptEl.scrollHeight;
 }
@@ -110,7 +112,7 @@ async function sendStudentMessage(content) {
 
 async function buildRecord() {
   setStage('Record');
-  const raw = await modelCall('record', turns.slice(-14));
+  const raw = await modelCall('record', turns);
   let record;
   try { record = JSON.parse(raw); } catch { throw new Error(`Record JSON parse failed: ${raw}`); }
   renderRecord(record);
@@ -169,6 +171,10 @@ gotItBtn.addEventListener('click', () => {
   if (!attemptExists) return;
   ownershipMode = true;
   setStage('Own it');
+  transcriptEl.classList.add('ownership-closed-book');
+  transcriptEl.querySelectorAll('.msg.assistant').forEach((message) => message.setAttribute('aria-hidden', 'true'));
+  ownershipNotice.classList.remove('hidden');
+  gotItBtn.classList.add('hidden');
   const prompt = 'Without scrolling up, restate the whole idea in your own words. What happened to the salt, and why?';
   turns.push({ role: 'assistant', content: prompt });
   addMessage('assistant', prompt);

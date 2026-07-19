@@ -39,11 +39,15 @@ When the student clears the selected bar, the tutor must say so and stop moving 
 
 The Reasoning Record is teacher-facing evidence, not a participation trophy. It is generated from the transcript and final restatement, and it can say **Not met** when the student never reaches the selected level bar. This makes the app useful for accountability: the teacher can see what the student attempted, what gap remained, and whether the final answer was owned.
 
+## Why Own it is closed-book
+
+The ownership test asks whether the student could explain the idea if the AI output were deleted. If tutor output remains readable while the student restates the idea, the test measures reading rather than understanding. Entering **Own it** therefore permanently blurs and fades every tutor message, disables selecting or copying that text, and leaves the student's own reasoning trail readable. The Reasoning Record separately compares the final restatement with the complete tutor transcript and caps ownership at **Partially met** when the student repeats tutor phrasing. The fade removes the output in practice; the echo check catches what the fade misses.
+
 ## Backend decisions
 
 The backend exposes one endpoint, `POST /api/model`, with a `mode` field for tutor or record calls. It keeps `OPENAI_API_KEY` on the server, uses GPT-5.6, retries failed model calls three times with increasing backoff, reads model responses as text before parsing JSON, and returns the actual error text on total failure.
 
-Conversation history sent to the model is capped at the last 14 turns to prevent unbounded payload growth.
+Tutor conversation history sent to the model is capped at the last 14 turns to prevent unbounded payload growth. Record generation receives the complete sanitized transcript so it can preserve the student's literal first message and compare the final restatement against every tutor sentence.
 
 ## Frontend decisions
 

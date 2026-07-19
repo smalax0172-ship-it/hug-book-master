@@ -30,7 +30,7 @@ function tutorPrompt(level) {
 }
 
 function recordPrompt(level) {
-  return `You are building a teacher-facing Reasoning Record for a ${level} chemistry student about why table salt dissolves in water. Judge only against this level bar:\n${LEVEL_BARS[level]}\n\nReturn JSON only with these keys: start, gap, moves, landed, ownership, evidence, engagement. start is their first stated attempt, near verbatim. gap is the specific missing piece, one or two sentences. moves is 2 to 4 short strings showing THEIR reasoning, not the tutor's. landed is their final restatement, near verbatim. ownership is Met, Partially met, or Not met, judged against the chosen level bar ONLY. evidence is one or two sentences citing what the student actually did. engagement is one sentence: genuinely working, stalling, testing the tutor, frustrated, or genuinely stuck. Be honest in both directions. If they met the level bar, say Met even if their language was informal. If they never got there, say Not met. Do not invent anything. A record that cannot report failure is not a record.`;
+  return `You are building a teacher-facing Reasoning Record for a ${level} chemistry student about why table salt dissolves in water. Judge only against this level bar:\n${LEVEL_BARS[level]}\n\nReturn JSON only with these keys: start, gap, moves, landed, ownership, evidence, engagement.\n\nOWNERSHIP AND ECHO CHECK. Before judging ownership, compare the student's final restatement against every sentence the TUTOR produced in the transcript. If the restatement is a verbatim or near-verbatim repeat of anything the tutor said, ownership is capped at "Partially met" and can never be "Met", regardless of correctness. In evidence, say plainly that the student restated the tutor's phrasing rather than their own. State explicitly which parts of the final restatement were the student's own construction and which parts mirrored the tutor.\n\nFIELD RULES. start must be the student's literal first message in the transcript, word for word, and nothing else. Do not substitute a later or better answer. gap is the specific missing piece, one or two sentences. moves must contain up to 4 short strings made only from sentences the STUDENT produced. If the student produced fewer moves, return fewer, including an empty array when there were none. Never include a sentence the tutor wrote. Use a student's short or rough sentence anyway: rough and theirs beats polished and borrowed. landed is the student's final restatement, near verbatim. ownership is Met, Partially met, or Not met, judged against the chosen level bar and subject to the echo cap above. evidence is one or two sentences citing what the student actually did and distinguishing their construction from mirrored tutor language. engagement is one sentence: genuinely working, stalling, testing the tutor, frustrated, or genuinely stuck.\n\nBe honest in both directions. If they met the level bar in their own language, say Met even if their language was informal. If they only met it by echoing the tutor, apply the Partially met cap. If they never got there, say Not met. Do not invent anything. A record that cannot report failure is not a record.`;
 }
 
 function send(res, status, body, type = 'application/json') {
@@ -44,11 +44,12 @@ async function readBody(req) {
   return JSON.parse(Buffer.concat(chunks).toString() || '{}');
 }
 
-function safeTurns(turns) {
-  return (Array.isArray(turns) ? turns : []).slice(-14).map((t) => ({
+function safeTurns(turns, limit = 14) {
+  const sanitized = (Array.isArray(turns) ? turns : []).map((t) => ({
     role: t.role === 'assistant' ? 'assistant' : 'user',
     content: String(t.content || '').slice(0, 4000)
   }));
+  return limit === null ? sanitized : sanitized.slice(-limit);
 }
 
 async function callOpenAI(messages, jsonMode = false) {
@@ -77,8 +78,9 @@ async function handleApi(req, res) {
   try {
     const body = await readBody(req);
     const level = ['CP', 'Honors', 'AP'].includes(body.level) ? body.level : 'CP';
-    const turns = safeTurns(body.turns);
-    if (body.mode === 'record') {
+    const isRecord = body.mode === 'record';
+    const turns = safeTurns(body.turns, isRecord ? null : 14);
+    if (isRecord) {
       const content = await callOpenAI([{ role: 'system', content: recordPrompt(level) }, ...turns], true);
       return send(res, 200, { content });
     }
