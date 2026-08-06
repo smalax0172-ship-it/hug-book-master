@@ -9,6 +9,8 @@ Repository structure for the picture book **Sometimes A Hug Is All I Need.**
 - `02_REFERENCES/` — Reference material for art, tone, layout, and production.
 - `03_PAGES/` — Page-by-page planning and production notes.
 
+For the manual workflow used to download a complete copy's plate images from the Blake Archive, see [`02_REFERENCES/BLAKE_ARCHIVE_DOWNLOAD_GUIDE.md`](02_REFERENCES/BLAKE_ARCHIVE_DOWNLOAD_GUIDE.md).
+
 ## Text Canon Rule
 
 `01_TEXT/STORY_CANON.md` is the single source of truth for the book text. It must never be rewritten, restructured, paraphrased, or otherwise changed without explicit approval.
